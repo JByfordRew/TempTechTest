@@ -9,4 +9,10 @@
     <ProjectReference Include="..\WordCounter\WordCounter.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="example-lotr-fotr.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

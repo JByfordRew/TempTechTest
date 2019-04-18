@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using WordCounter;
+using System.Linq;
 
 namespace LOTRWordCount
 {
@@ -7,13 +10,20 @@ namespace LOTRWordCount
         static void Main(string[] args)
         {
             StartApp();
-            OutputResult();
+            var top10 = new FileWordCounter().CountWords("example-lotr-fotr.txt").ToList();
+            OutputResult(top10);
             ExitApp();
         }
 
-        private static void OutputResult()
+        private static void OutputResult(List<KeyValuePair<string,int>> items)
         {
-            Console.WriteLine("output"); //TODO            
+            var ascendingItems = items.OrderBy(x => x.Value).ToList();
+            var position = items.Count;
+            while (position > 0) {
+                var item = ascendingItems[position - 1];
+                Console.WriteLine($"{position:00}: {item.Value} - {item.Key}");
+                position--;
+            }                        
         }
 
         private static void StartApp()

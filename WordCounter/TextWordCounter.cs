@@ -30,15 +30,17 @@ namespace WordCounter
         private static Dictionary<string, int> CountWords(List<string> words)
         {
             var wordCount = new Dictionary<string, int>();
-            words.ForEach(word =>
-            {
-                word = word.ToLower();
-                if (word.All(Char.IsLetter))
-                {                    
-                    AddOrUpdateWordCount(wordCount, word);
-                }
-            });
+            words.ForEach(word => RecordIfWord(word, wordCount));
             return wordCount;
+        }
+
+        private static void RecordIfWord(string word, Dictionary<string, int> wordCount)
+        {
+            word = word.ToLower();
+            if (word.All(Char.IsLetter))
+            {
+                AddOrUpdateWordCount(wordCount, word);
+            }            
         }
 
         private static void AddOrUpdateWordCount(Dictionary<string, int> wordCount, string key)

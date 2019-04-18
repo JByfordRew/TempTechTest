@@ -17,7 +17,7 @@ namespace XUnitTestOTRWordCount
         }
 
         [Theory]
-        [InlineData("example-lotr-fotr.txt", "a:1,b:2,c:3,d:4,e:5,f:6,g:7,h:8,i:9,j:10")]
+        [InlineData("example-lotr-fotr.txt", "the:11676,and:7353,of:5069,to:3899,a:3689,he:2894,in:2882,was:2431,that:2339,i:2194")]
         public void ShouldOutput(string filename, string expectedTop10)
         {
             //given
@@ -26,7 +26,8 @@ namespace XUnitTestOTRWordCount
             //when
             var actual = sut.CountWords(filename);
 
-            //then
+            //thennote
+            actual.Count.Should().Be(10);
             actual.Should().BeEquivalentTo(expect);
         }
 

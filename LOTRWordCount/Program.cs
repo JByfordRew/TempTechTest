@@ -10,7 +10,7 @@ namespace LOTRWordCount
         static void Main(string[] args)
         {
             StartApp();
-            var top10 = new FileWordCounter().CountWords("example-lotr-fotr.txt").ToList();
+            var top10 = new FileWordCounter().CountTopWords("example-lotr-fotr.txt", 10).ToList();
             OutputResult(top10);
             ExitApp();
         }

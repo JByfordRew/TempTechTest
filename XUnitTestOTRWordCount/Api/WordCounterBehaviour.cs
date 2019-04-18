@@ -24,7 +24,7 @@ namespace XUnitTestOTRWordCount
             var expect = ListFrom(expectedTop10);
 
             //when
-            var actual = sut.CountWords(filename);
+            var actual = sut.CountTopWords(filename, 10);
 
             //thennote
             actual.Count.Should().Be(10);

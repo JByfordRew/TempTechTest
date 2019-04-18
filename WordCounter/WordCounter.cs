@@ -7,13 +7,12 @@ namespace WordCounter
 {
     public class FileWordCounter : ICountWords
     {
-        public IList<KeyValuePair<string,int>> CountWords(string source)
+        public IList<KeyValuePair<string,int>> CountTopWords(string source, int top)
         {
-            var text = SourceText(source);
-            text = Preprocess(text);
+            var text = Preprocess(SourceText(source));            
             var words = Words(text);
             var wordCount = CountWords(words);
-            var topWords = Top10(wordCount);
+            var topWords = Top(wordCount, top);
             return topWords;
         }
 
@@ -23,10 +22,10 @@ namespace WordCounter
             return text;
         }
 
-        private static List<KeyValuePair<string, int>> Top10(Dictionary<string, int> items)
+        private static List<KeyValuePair<string, int>> Top(Dictionary<string, int> items, int topCount)
         {
             return items.OrderByDescending(x => x.Value)
-                        .Take(10)
+                        .Take(topCount)
                         .Select(x => new KeyValuePair<string, int>(x.Key, x.Value))
                         .ToList();
         }

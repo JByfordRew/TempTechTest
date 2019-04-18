@@ -4,12 +4,12 @@ using WordCounter.IO;
 
 namespace WordCounter
 {
-    public class FileWordCounter : ITopWordCounter
+    public class FileTopWordCounter : ITopWordCounter
     {
         private readonly ITextReader textReader;
         private readonly IWordCounter textWordCounter;
 
-        public FileWordCounter(ITextReader textReader, IWordCounter textWordCounter)
+        public FileTopWordCounter(ITextReader textReader, IWordCounter textWordCounter)
         {
             this.textReader = textReader;
             this.textWordCounter = textWordCounter;

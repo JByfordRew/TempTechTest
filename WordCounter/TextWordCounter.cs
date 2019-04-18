@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using WordCounter.IO;
 
 namespace WordCounter
 {
@@ -18,6 +17,7 @@ namespace WordCounter
 
         private static string Preprocess(string text)
         {
+            text = text ?? "";
             text = StandardiseWhitespace(text);
             return text;
         }
@@ -32,9 +32,10 @@ namespace WordCounter
             var wordCount = new Dictionary<string, int>();
             words.ForEach(word =>
             {
+                word = word.ToLower();
                 if (word.All(Char.IsLetter))
                 {                    
-                    AddOrUpdateWordCount(wordCount, word.ToLower());
+                    AddOrUpdateWordCount(wordCount, word);
                 }
             });
             return wordCount;
@@ -54,7 +55,7 @@ namespace WordCounter
 
         private static List<string> Words(string text)
         {
-            return text.Split(" ").ToList();
+            return text.Split(" ").Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
         }
         
         public static string StandardiseWhitespace(string text)

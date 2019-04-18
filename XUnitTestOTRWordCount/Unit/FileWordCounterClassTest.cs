@@ -15,7 +15,7 @@ namespace XUnitTestOTRWordCount.Unit
         {
             private readonly Mock<ITextReader> mockFileTextReader;
             private readonly Mock<IWordCounter> mockTextWordCounter;
-            private readonly FileWordCounter sut;
+            private readonly FileTopWordCounter sut;
             private readonly string filepath;
             private readonly int topCount;
             private readonly string content;
@@ -24,7 +24,7 @@ namespace XUnitTestOTRWordCount.Unit
             {
                 mockFileTextReader = new Mock<ITextReader>();
                 mockTextWordCounter = new Mock<IWordCounter>();
-                sut = new FileWordCounter(mockFileTextReader.Object, mockTextWordCounter.Object);
+                sut = new FileTopWordCounter(mockFileTextReader.Object, mockTextWordCounter.Object);
 
                 filepath = "fake filepath";
                 topCount = 10;

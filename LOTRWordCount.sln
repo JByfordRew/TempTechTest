@@ -5,6 +5,14 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOTRWordCount", "LOTRWordCount\LOTRWordCount.csproj", "{D101C9C6-7512-4ACF-BBED-0588408C8541}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestOTRWordCount", "XUnitTestOTRWordCount\XUnitTestOTRWordCount.csproj", "{06974E04-CBDF-48BA-91BB-F86103D07B7C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{95EFC08F-378F-40BD-A04F-6CBA595EE10A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Feature", "Feature", "{CAA06811-EAA4-40FE-917E-90D091E773D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordCounter", "WordCounter\WordCounter.csproj", "{08C40D0F-760C-4EE7-A5F3-ECEF427D5C1E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +23,21 @@ Global
 		{D101C9C6-7512-4ACF-BBED-0588408C8541}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D101C9C6-7512-4ACF-BBED-0588408C8541}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D101C9C6-7512-4ACF-BBED-0588408C8541}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06974E04-CBDF-48BA-91BB-F86103D07B7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06974E04-CBDF-48BA-91BB-F86103D07B7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06974E04-CBDF-48BA-91BB-F86103D07B7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06974E04-CBDF-48BA-91BB-F86103D07B7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08C40D0F-760C-4EE7-A5F3-ECEF427D5C1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08C40D0F-760C-4EE7-A5F3-ECEF427D5C1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08C40D0F-760C-4EE7-A5F3-ECEF427D5C1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08C40D0F-760C-4EE7-A5F3-ECEF427D5C1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CAA06811-EAA4-40FE-917E-90D091E773D8} = {95EFC08F-378F-40BD-A04F-6CBA595EE10A}
+		{08C40D0F-760C-4EE7-A5F3-ECEF427D5C1E} = {95EFC08F-378F-40BD-A04F-6CBA595EE10A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F2FD8C64-DEBA-4FED-A6A9-CE051DB0F9BD}

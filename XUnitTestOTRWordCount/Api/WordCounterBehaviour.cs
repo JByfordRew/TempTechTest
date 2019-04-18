@@ -10,11 +10,11 @@ namespace XUnitTestOTRWordCount
 {
     public class WordCounterBehaviour
     {
-        private readonly ICountWords sut;
+        private readonly ITopWordCounter sut;
 
         public WordCounterBehaviour()
         {
-            sut = new FileWordCounter(new FileTextReader());
+            sut = new FileWordCounter(new FileTextReader(), new TextWordCounter());
         }
 
         [Theory]

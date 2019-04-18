@@ -3,7 +3,7 @@ using System.IO;
 
 namespace WordCounter.IO
 {
-    public class FileTextReader : IReadText
+    public class FileTextReader : ITextReader
     {
         public string SourceText(string source)
         {

@@ -18,7 +18,7 @@ namespace LOTRWordCount
 
         private static FileWordCounter BuildWordCounter()
         {
-            return new FileWordCounter(new FileTextReader());
+            return new FileWordCounter(new FileTextReader(), new TextWordCounter());
         }
 
         private static void OutputResult(List<KeyValuePair<string,int>> items)

@@ -1,6 +1,6 @@
 ﻿namespace WordCounter.IO
 {
-    public interface IReadText
+    public interface ITextReader
     {
         string SourceText(string source);
     }

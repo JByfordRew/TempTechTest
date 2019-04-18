@@ -5,22 +5,15 @@ using WordCounter.IO;
 
 namespace WordCounter
 {
-    public class FileWordCounter : ICountWords
-    {
-        private readonly IReadText textReader;
-
-        public FileWordCounter(IReadText textReader)
+    public class TextWordCounter : IWordCounter
+    {                
+        public IList<KeyValuePair<string,int>> CountWords(string source)
         {
-            this.textReader = textReader;
-        }
-
-        public IList<KeyValuePair<string,int>> CountTopWords(string source, int top)
-        {
-            var text = Preprocess(textReader.SourceText(source));            
+            var text = Preprocess(source);            
             var words = Words(text);
             var wordCount = CountWords(words);
-            var topWords = Top(wordCount, top);
-            return topWords;
+            var wordList = WordList(wordCount);
+            return wordList;
         }
 
         private static string Preprocess(string text)
@@ -29,12 +22,9 @@ namespace WordCounter
             return text;
         }
 
-        private static List<KeyValuePair<string, int>> Top(Dictionary<string, int> items, int topCount)
+        private static List<KeyValuePair<string, int>> WordList(Dictionary<string, int> items)
         {
-            return items.OrderByDescending(x => x.Value)
-                        .Take(topCount)
-                        .Select(x => new KeyValuePair<string, int>(x.Key, x.Value))
-                        .ToList();
+            return items.Select(x => new KeyValuePair<string, int>(x.Key, x.Value)).ToList();
         }
 
         private static Dictionary<string, int> CountWords(List<string> words)

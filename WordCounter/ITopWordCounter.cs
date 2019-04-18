@@ -2,7 +2,7 @@
 
 namespace WordCounter
 {
-    public interface ICountWords
+    public interface ITopWordCounter
     {
         IList<KeyValuePair<string, int>> CountTopWords(string source, int top);
     }

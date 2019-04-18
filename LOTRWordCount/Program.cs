@@ -16,9 +16,10 @@ namespace LOTRWordCount
             ExitApp();
         }
 
-        private static FileTopWordCounter BuildWordCounter()
+        private static ITopWordCounter BuildWordCounter()
         {
-            return new FileTopWordCounter(new FileTextReader(), new TextWordCounter());
+            return new ParallelFileLineTopWordCounter();
+            //return new FileTopWordCounter(new FileTextReader(), new TextWordCounter());
         }
 
         private static void OutputResult(List<KeyValuePair<string,int>> items)

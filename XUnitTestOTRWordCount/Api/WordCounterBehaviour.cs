@@ -14,7 +14,8 @@ namespace XUnitTestOTRWordCount
 
         public WordCounterBehaviour()
         {
-            sut = new FileTopWordCounter(new FileTextReader(), new TextWordCounter());
+            sut = new ParallelFileLineTopWordCounter();
+            //sut = new FileTopWordCounter(new FileTextReader(), new TextWordCounter());
         }
 
         [Theory]

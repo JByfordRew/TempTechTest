@@ -5,10 +5,7 @@ using System.Linq;
 namespace WordCounter
 {
     public class TextWordCounter : IWordCounter
-    {
-        public IDictionary<string,int> wordCount = new Dictionary<string, int>();
-        public Action<IDictionary<string, int>, string> addOrUpdate = AddOrUpdateWordCount;
-
+    {                
         public IList<KeyValuePair<string,int>> CountWords(string source)
         {
             var text = Preprocess(source);            
@@ -18,36 +15,36 @@ namespace WordCounter
             return wordList;
         }
 
-        private string Preprocess(string text)
+        private static string Preprocess(string text)
         {
             text = text ?? "";
             text = StandardiseWhitespace(text);
             return text;
         }
 
-        private List<KeyValuePair<string, int>> WordList(IDictionary<string, int> items)
+        private static List<KeyValuePair<string, int>> WordList(Dictionary<string, int> items)
         {
             return items.Select(x => new KeyValuePair<string, int>(x.Key, x.Value)).ToList();
         }
 
-        private IDictionary<string, int> CountWords(List<string> words)
-        {            
+        private static Dictionary<string, int> CountWords(List<string> words)
+        {
+            var wordCount = new Dictionary<string, int>();
             words.ForEach(word => RecordIfWord(word, wordCount));
             return wordCount;
         }
 
-        private void RecordIfWord(string word, IDictionary<string, int> wordCount)
+        private static void RecordIfWord(string word, Dictionary<string, int> wordCount)
         {
             word = word.ToLower();
             if (word.All(Char.IsLetter))
             {
-                addOrUpdate(wordCount, word);
-                //AddOrUpdateWordCount(wordCount, word);
+                AddOrUpdateWordCount(wordCount, word);
             }            
         }
 
-        private static void AddOrUpdateWordCount(IDictionary<string, int> wordCount, string key)
-        {            
+        private static void AddOrUpdateWordCount(Dictionary<string, int> wordCount, string key)
+        {
             if (!wordCount.ContainsKey(key))
             {
                 wordCount.Add(key, 1);
@@ -58,12 +55,12 @@ namespace WordCounter
             }
         }
 
-        private List<string> Words(string text)
+        private static List<string> Words(string text)
         {
             return text.Split(" ").Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
         }
         
-        public string StandardiseWhitespace(string text)
+        public static string StandardiseWhitespace(string text)
         {
             return string.Join(" ", text.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
         }

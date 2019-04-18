@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using WordCounter;
 using System.Linq;
+using WordCounter.IO;
 
 namespace LOTRWordCount
 {
@@ -10,9 +11,14 @@ namespace LOTRWordCount
         static void Main(string[] args)
         {
             StartApp();
-            var top10 = new FileWordCounter().CountTopWords("example-lotr-fotr.txt", 10).ToList();
+            var top10 = BuildWordCounter().CountTopWords("example-lotr-fotr.txt", 10).ToList();
             OutputResult(top10);
             ExitApp();
+        }
+
+        private static FileWordCounter BuildWordCounter()
+        {
+            return new FileWordCounter(new FileTextReader());
         }
 
         private static void OutputResult(List<KeyValuePair<string,int>> items)

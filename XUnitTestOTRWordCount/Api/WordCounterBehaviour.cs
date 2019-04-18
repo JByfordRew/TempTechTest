@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using WordCounter;
+using WordCounter.IO;
 using Xunit;
 
 namespace XUnitTestOTRWordCount
@@ -13,7 +14,7 @@ namespace XUnitTestOTRWordCount
 
         public WordCounterBehaviour()
         {
-            sut = new FileWordCounter();
+            sut = new FileWordCounter(new FileTextReader());
         }
 
         [Theory]

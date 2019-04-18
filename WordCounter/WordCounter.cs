@@ -1,15 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using WordCounter.IO;
 
 namespace WordCounter
 {
     public class FileWordCounter : ICountWords
     {
+        private readonly IReadText textReader;
+
+        public FileWordCounter(IReadText textReader)
+        {
+            this.textReader = textReader;
+        }
+
         public IList<KeyValuePair<string,int>> CountTopWords(string source, int top)
         {
-            var text = Preprocess(SourceText(source));            
+            var text = Preprocess(textReader.SourceText(source));            
             var words = Words(text);
             var wordCount = CountWords(words);
             var topWords = Top(wordCount, top);
@@ -59,14 +66,7 @@ namespace WordCounter
         {
             return text.Split(" ").ToList();
         }
-
-        private static string SourceText(string source)
-        {
-            var filepath = source;
-            var text = File.ReadAllText(filepath);
-            return text;
-        }
-
+        
         public static string StandardiseWhitespace(string text)
         {
             return string.Join(" ", text.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
